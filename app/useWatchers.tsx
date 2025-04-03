@@ -10,7 +10,7 @@ export const useWatchers = ({ channel }: { channel: Channel }) => {
 
     try {
       const result = await channel.query({ watchers: { limit: 5, offset: 0 } });
-      setWatchers(result?.watchers?.map((watcher) => watcher.id));
+      setWatchers(result?.watchers?.map((watcher) => watcher.id) || []);
       return;
     } catch (err) {
       setError(err as Error);
